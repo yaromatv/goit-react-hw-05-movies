@@ -1,6 +1,18 @@
+import { Link, Outlet, useLocation } from 'react-router-dom';
+import BackLink from 'components/BackLink';
+import {
+  StyledDivFlex,
+  StyledDivInfo,
+  StyledDivAddInfo,
+} from './MovieDetails.styled';
+
 const IMG_BASE = 'https://image.tmdb.org/t/p/w300';
 
 const MovieDetails = ({ data }) => {
+  const location = useLocation();
+
+  const backLinkHref = location.state?.from ?? '/';
+
   const { poster_path, title, release_date, vote_average, overview, genres } =
     data;
 
@@ -12,9 +24,10 @@ const MovieDetails = ({ data }) => {
 
   return (
     <>
-      <div>
+      <BackLink to={backLinkHref}>Go back</BackLink>
+      <StyledDivFlex>
         <img src={poster} alt="poster" width="300px" height="450px" />
-        <div>
+        <StyledDivInfo>
           <h2>
             {title} ({year})
           </h2>
@@ -23,15 +36,20 @@ const MovieDetails = ({ data }) => {
           <p>{overview}</p>
           <h3>Genres</h3>
           <p>{formattedGenres}</p>
-        </div>
-      </div>
-      <div>
+        </StyledDivInfo>
+      </StyledDivFlex>
+      <StyledDivAddInfo>
         <p>Additional information</p>
         <ul>
-          <li>Cast</li>
-          <li>Reviews</li>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
         </ul>
-      </div>
+      </StyledDivAddInfo>
+      <Outlet />
     </>
   );
 };

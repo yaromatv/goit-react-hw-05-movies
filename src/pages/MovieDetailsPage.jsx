@@ -2,11 +2,14 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import MovieDetails from 'components/MovieDetails';
+import Loading from 'components/Loading';
 
 const MovieDetailsPage = () => {
   const [data, setData] = useState([]);
+
   const { movieId } = useParams();
-  // console.log(movieId);
+
+  const loaded = Object.keys(data).length > 0;
 
   useEffect(() => {
     async function fetchMovie() {
@@ -31,9 +34,7 @@ const MovieDetailsPage = () => {
     fetchMovie();
   }, [movieId]);
 
-  return (
-    <main>{Object.keys(data).length > 0 && <MovieDetails data={data} />}</main>
-  );
+  return <main>{loaded ? <MovieDetails data={data} /> : <Loading />}</main>;
 };
 
 export default MovieDetailsPage;

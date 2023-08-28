@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-import TrendingList from 'components/TrendingList';
+import TrendingList from 'components/MoviesList';
 
 const HomePage = () => {
   const [data, setData] = useState([]);
@@ -33,6 +32,7 @@ const HomePage = () => {
 
   return (
     <main>
+      <h2>Trending today</h2>
       <TrendingList data={data} />
     </main>
   );
