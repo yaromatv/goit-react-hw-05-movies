@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import { Suspense } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import BackLink from 'components/BackLink';
+import Loading from 'components/Loading';
 import {
   StyledDivFlex,
   StyledDivInfo,
@@ -50,7 +52,9 @@ const MovieDetails = ({ data }) => {
           </li>
         </ul>
       </StyledDivAddInfo>
-      <Outlet />
+      <Suspense fallback={<Loading />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
