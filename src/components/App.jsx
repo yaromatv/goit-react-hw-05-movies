@@ -9,8 +9,6 @@ import LayOut from 'components/LayOut';
 import Cast from './Cast';
 import Reviews from './Reviews';
 
-// const API = '0bbaed355387d7fbc6e1d4f11e9865c5';
-
 export const App = () => {
   return (
     <div>

@@ -1,5 +1,4 @@
 import { StyledNavLink, StyledNav } from './Header.styled';
-// import css from './Header.module.css';
 
 const Header = () => {
   return (

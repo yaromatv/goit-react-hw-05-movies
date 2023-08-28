@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import BackLink from 'components/BackLink';
 import {
@@ -52,6 +53,21 @@ const MovieDetails = ({ data }) => {
       <Outlet />
     </>
   );
+};
+
+MovieDetails.propTypes = {
+  data: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      })
+    ),
+  }).isRequired,
 };
 
 export default MovieDetails;

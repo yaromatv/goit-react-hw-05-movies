@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Loading from 'components/Loading';
@@ -60,6 +61,10 @@ const Cast = () => {
       )}
     </>
   );
+};
+
+Cast.propTypes = {
+  movieId: PropTypes.string,
 };
 
 export default Cast;
